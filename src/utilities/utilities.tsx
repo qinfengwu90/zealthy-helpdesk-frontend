@@ -1,6 +1,6 @@
 import {Notification, Ticket} from "../models/models";
 
-const SERVER_ORIGIN = 'http://localhost:8080';
+const SERVER_ORIGIN = 'https://helpdesk-ticketing-continuous-wiiwahwvbq-uc.a.run.app/';
 
 
 const handleResponseStatus = (response: Response, errMsg: string) => {
@@ -71,7 +71,6 @@ export const changeAdminPassword = (email: string, oldPassword: string, newPassw
 }
 
 export async function getAllTickets(): Promise<{tickets: Ticket[]}> {
-    const authToken = localStorage.getItem('authToken');
     const url = `${SERVER_ORIGIN}/admins/all-tickets`;
 
     return fetch(url, {
