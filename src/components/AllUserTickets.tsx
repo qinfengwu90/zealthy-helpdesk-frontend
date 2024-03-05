@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {Notification, Ticket} from "../models/models";
 import UserInfoToReviewTicket from "./UserInfoToReviewTicket";
 import UserExistingTickets from "./UserExistingTickets";
-import {getAllTicketsAndEmailUpdatesForUser} from "../utilities/utilities";
+import {formatTicketStatus, getAllTicketsAndEmailUpdatesForUser} from "../utilities/utilities";
 
 
 function AllUserTickets() {
@@ -26,6 +26,9 @@ function AllUserTickets() {
   const onSuccess = (retrievedTickets: Ticket[], retrievedEmails: Notification[]) => {
       setCorrectUserInfoEntered(!correctUserInfoEntered)
       if (retrievedTickets !== null) {
+          retrievedTickets.forEach((ticket, index) => {
+              retrievedTickets[index].status = formatTicketStatus(ticket.status)
+          })
         setTickets([...retrievedTickets]);
       }
       if (retrievedEmails !== null) {

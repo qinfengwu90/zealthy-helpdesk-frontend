@@ -156,3 +156,8 @@ export const deleteTicket = (ticketId: number) => {
         handleResponseStatus(response, 'Fail to delete ticket');
     })
 }
+
+export const formatTicketStatus = (status: string) => {
+    let newStatus = status.charAt(0).toUpperCase() + status.slice(1);
+    return newStatus.replace(/_/g, ' ');
+}
