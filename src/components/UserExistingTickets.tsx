@@ -7,7 +7,7 @@ import {Button, Card, List, Tooltip} from "antd";
 function UserExistingTickets({tickets, emails, onLogout}: {tickets: Ticket[], emails: Notification[], onLogout: () => void}) {
 
   return (
-      <>
+      <div className={"flex flex-col gap-y-2 w-3/4"} >
           <div>
               <div className={"justify-between flex flex-row"}>
                 <div className={"font-semibold text-2xl"}>All your tickets</div>
@@ -90,7 +90,7 @@ function UserExistingTickets({tickets, emails, onLogout}: {tickets: Ticket[], em
                   )}
               />}
           </div>
-      </>
+      </div>
 
   );
 }
