@@ -56,8 +56,8 @@ function UserExistingTickets({tickets, emails, onLogout}: {tickets: Ticket[], em
           </div>
           <div>
               <div className={"font-semibold text-2xl"}>Email Updates</div>
-              {emails.length === 0 && <div>No email updates</div>}
-              {emails.length > 0 &&
+              {(emails === null || emails.length === 0) && <div>No email updates</div>}
+              {emails !== null && emails.length > 0 &&
               <List
                   style={{marginTop: 20}}
                   // loading={loading}

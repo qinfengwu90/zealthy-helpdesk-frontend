@@ -27,8 +27,12 @@ function AllUserTickets() {
       setCorrectUserInfoEntered(!correctUserInfoEntered)
       console.log(retrievedTickets)
       console.log([...retrievedTickets]);
-      setTickets([...retrievedTickets]);
-      setEmails([...retrievedEmails]);
+      if (retrievedTickets !== null) {
+        setTickets([...retrievedTickets]);
+      }
+      if (retrievedEmails !== null) {
+            setEmails([...retrievedEmails]);
+      }
   }
 
   const onLogout = () => {
