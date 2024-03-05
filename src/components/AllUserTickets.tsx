@@ -39,6 +39,7 @@ function AllUserTickets() {
   const onLogout = () => {
         localStorage.removeItem('userEmail');
         localStorage.removeItem('userLastName');
+        localStorage.removeItem('userFirstName');
         setCorrectUserInfoEntered(false);
   }
 

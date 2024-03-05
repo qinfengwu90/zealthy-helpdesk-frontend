@@ -2,13 +2,21 @@ import {Button, Form, Input, message} from "antd";
 import {createTicket} from "../utilities/utilities";
 import {UserOutlined, MailOutlined} from "@ant-design/icons";
 import TextArea from "antd/es/input/TextArea";
+import {useEffect, useState} from "react";
 
 function CreateTicketBox() {
     const [form] = Form.useForm();
+    const [userEmail, setUserEmail] = useState(localStorage.getItem('userEmail')! || "");
+    const [userLastName, setUserLastName] = useState(localStorage.getItem('userLastName')! || "");
+    const [userFirstName, setUserFirstName] = useState(localStorage.getItem('userFirstName')! || "");
+
     const onFinish = (data: { email: string; description: string; firstName: string; lastName: string; }) => {
 
         createTicket(data.email, data.description, data.firstName, data.lastName)
             .then( () => {
+                localStorage.setItem('userEmail', data.email);
+                localStorage.setItem('userLastName', data.lastName);
+                localStorage.setItem('userFirstName', data.firstName);
                 message.success({content: `Your ticket has been created`, duration: 3} )
             }
             ).catch(err => {
@@ -27,6 +35,11 @@ function CreateTicketBox() {
                 preserve={false}
                 labelCol={{span: 8}}
                 wrapperCol={{span: 12}}
+                initialValues={{
+                    ["email"]:  userEmail,
+                    ["firstName"]: userFirstName,
+                    ["lastName"]: userLastName
+                }}
             >
                 <Form.Item
                     label={"Email"}
