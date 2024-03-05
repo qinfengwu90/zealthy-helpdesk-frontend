@@ -25,8 +25,6 @@ function AllUserTickets() {
 
   const onSuccess = (retrievedTickets: Ticket[], retrievedEmails: Notification[]) => {
       setCorrectUserInfoEntered(!correctUserInfoEntered)
-      console.log(retrievedTickets)
-      console.log([...retrievedTickets]);
       if (retrievedTickets !== null) {
         setTickets([...retrievedTickets]);
       }

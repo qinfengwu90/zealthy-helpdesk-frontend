@@ -34,9 +34,7 @@ export const adminLogin = (credential: {email: string, password: string}) => {
         localStorage.setItem("adminEmail", credential.email);
         return response.json();
     }).then((token: {token:string}) => {
-        console.log("i'm here")
         localStorage.setItem('authToken', token.token);
-        console.log(token);
     })
 }
 
@@ -87,7 +85,6 @@ export async function getAllTickets(): Promise<{tickets: Ticket[]}> {
 
 export const updateTicketStatus = (ticketId: number, status: string, adminResponse: string) => {
     const url = `${SERVER_ORIGIN}/admins/update-ticket-status`;
-    console.log(ticketId, status, adminResponse)
     return fetch(url, {
         method: 'POST',
         headers: {

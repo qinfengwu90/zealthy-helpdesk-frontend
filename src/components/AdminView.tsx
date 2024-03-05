@@ -24,7 +24,6 @@ function AdminView() {
     }
 
     const handleUpdateTicket = (data: { ticketId: number; status: string; adminResponse: string }) => {
-        console.log(data, "onfinish")
         updateTicketStatus(data.ticketId, data.status, data.adminResponse)
             .then(() => {
                 message.success({content: `Ticket #${data.ticketId} has been updated`, duration: 3} )

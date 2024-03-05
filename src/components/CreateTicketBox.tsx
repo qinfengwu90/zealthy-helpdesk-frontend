@@ -7,7 +7,6 @@ function CreateTicketBox() {
     const [form] = Form.useForm();
     const onFinish = (data: { email: string; description: string; firstName: string; lastName: string; }) => {
 
-        console.log(data)
         createTicket(data.email, data.description, data.firstName, data.lastName)
             .then( () => {
                 message.success({content: `Your ticket has been created`, duration: 3} )

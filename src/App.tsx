@@ -18,7 +18,6 @@ function App() {
     useEffect(() => {
         const authToken = localStorage.getItem("authToken");
         setAuthed(authToken !== null)
-        console.log(authed)
     }, []);
 
     const handleLogOut = () => {
