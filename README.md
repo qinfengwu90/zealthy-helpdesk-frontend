@@ -1,46 +1,24 @@
-# Getting Started with Create React App
+# Helpdesk Ticketing System Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project serves as the frontend gateway for managing the Helpdesk Ticketing System. 
+- **Users**: can easily create and track tickets without the need to register or remember passwords. 
+- **Admin**: can manage tickets under the protection of authentication
 
-## Available Scripts
+## Technologies Used
 
-In the project directory, you can run:
+- **React**: JavaScript library for building user interfaces.
+- **Ant Design**: UI library for React components, providing a sleek and efficient user interface.
 
-### `npm start`
+## Deployment
+This React frontend is deployed using Google Cloud Run, which communicates the Go backend server which is also hosted on Google Cloud Run.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting Started
+You can try out the frontend by visiting the following link:
+https://zealthy-helpdesk-frontend-wiiwahwvbq-uc.a.run.app/
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Features
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Ticket Creation**: Users can easily create new tickets without the need to register or log in.
+- **Ticket Status**: Users can track the status of their tickets directly from the frontend.
+- **Admin Authentication**: Admins are required to log in to access ticket management functionalities.
+- **Future Feature**: Admin list for better management of access to the system.
