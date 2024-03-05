@@ -41,6 +41,8 @@ function AllUserTickets() {
         localStorage.removeItem('userLastName');
         localStorage.removeItem('userFirstName');
         setCorrectUserInfoEntered(false);
+        setTickets([]);
+        setEmails([]);
   }
 
   return (
