@@ -13,6 +13,7 @@ function UserInfoToReviewTicket({onSuccess}: {onSuccess: (tickets: Ticket[], ema
         getAllTicketsAndEmailUpdatesForUser(data.email, data.lastName)
             .then((value) => {
                 onSuccess(value.tickets, value.emails);
+                window.location.reload();
             }).catch(err => {
             message.error(err.message);
         })
