@@ -53,5 +53,5 @@
   "devDependencies": {
     "tailwindcss": "^3.4.1"
   },
-  "proxy": "https://helpdesk-ticketing-continuous-wiiwahwvbq-uc.a.run.app/"
+  "proxy": "https://helpdesk-ticketing-continuous-wiiwahwvbq-uc.a.run.app"
 }
