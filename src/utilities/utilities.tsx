@@ -1,6 +1,6 @@
 import {Notification, Ticket} from "../models/models";
 
-const SERVER_ORIGIN = 'https://helpdesk-ticketing-continuous-wiiwahwvbq-uc.a.run.app/';
+const SERVER_ORIGIN = 'https://helpdesk-ticketing-continuous-wiiwahwvbq-uc.a.run.app';
 
 
 const handleResponseStatus = (response: Response, errMsg: string) => {
