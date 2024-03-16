@@ -10,6 +10,18 @@ function AdminTicketView() {
     const [ticket, setTicket] = useState<Ticket>({} as Ticket);
     const [displayModal, setDisplayModal] = useState(false);
 
+    const statusPriority = (status: string) => {
+        switch (status) {
+            case "New":
+                return 1;
+            case "In Progress":
+                return 2;
+            case "Resolved":
+                return 3;
+            default:
+                return 0;
+        }
+    }
     const columns: TableProps<Ticket>["columns"] = [
         {
             title: "ID",
@@ -22,6 +34,7 @@ function AdminTicketView() {
             dataIndex: "email",
             key: "email",
             responsive: ["md"],
+            sorter: (a, b) => a.email.localeCompare(b.email),
         },
         {
             title: "Name",
@@ -32,6 +45,7 @@ function AdminTicketView() {
                     <a>{record.firstName + " " + record.lastName}</a>
                 </Space>
             ),
+            sorter: (a, b) => a.firstName.localeCompare(b.firstName),
         },
         {
             title: "Issue",
@@ -48,6 +62,7 @@ function AdminTicketView() {
             dataIndex: "status",
             key: "status",
             responsive: ["md"],
+            sorter: (a, b) => statusPriority(a.status) - statusPriority(b.status),
         },
         {
             title: "Admin Response",
@@ -62,14 +77,13 @@ function AdminTicketView() {
             key: "createdAt",
             responsive: ["lg"],
             render: (_, record) => (
-                <Space size="middle">
-                    <a>
-                        {new Date(record.createdAt).toLocaleDateString("en-US", {
-                            timeZone: "America/New_York",
-                        })}
-                    </a>
-                </Space>
+                <div>
+                    {new Date(record.createdAt).toLocaleDateString("en-US", {
+                        timeZone: "America/New_York",
+                    })}
+                </div>
             ),
+            sorter: (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
         },
         {
             title: "Updated At",
@@ -77,23 +91,23 @@ function AdminTicketView() {
             key: "updatedAt",
             responsive: ["lg"],
             render: (_, record) => (
-                <Space size="middle">
-                    <a>
-                        {new Date(record.updatedAt).toLocaleDateString("en-US", {
-                            timeZone: "America/New_York",
-                        })}
-                    </a>
-                </Space>
+                <div>
+                    {new Date(record.updatedAt).toLocaleDateString("en-US", {
+                        timeZone: "America/New_York",
+                    })}
+                </div>
             ),
+            sorter: (a, b) => new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime(),
         },
         {
             title: "Action",
             key: "action",
             render: (_, record) => (
                 <Space>
-                    <a onClick={() => {
+                    <div onClick={() => {
                         viewDetailOnClick(record);
-                    }}>View</a>
+                    }}>View
+                    </div>
                 </Space>
             ),
         },
