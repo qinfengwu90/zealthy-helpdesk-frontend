@@ -22,6 +22,7 @@ function CreateTicketBox() {
                     duration: 3,
                 });
                 resetFields();
+                window.location.reload();
             })
             .catch((err) => {
                 message.error(err.message);
