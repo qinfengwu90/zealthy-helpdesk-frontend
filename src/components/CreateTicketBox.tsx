@@ -1,4 +1,4 @@
-import {Button, Form, Input, message} from "antd";
+import {Button, Form, Input, message, Space} from "antd";
 import {createTicket} from "../utilities/UserUtilities";
 import {MailOutlined, UserOutlined} from "@ant-design/icons";
 import TextArea from "antd/es/input/TextArea";
@@ -36,17 +36,16 @@ function CreateTicketBox() {
     };
 
     return (
-        <div className={"flex flex-col gap-y-3 w-1/2 align-middle"}>
+        <div className={"flex flex-col gap-y-3 xs:w-4/5 sm:w-1/2 lg:w-1/3 justify-items-stretch"}>
             <div className={"!text-center font-semibold text-lg md:text-2xl"}>
                 Create a help desk ticket
             </div>
             <Form
                 form={form}
+                layout={"vertical"}
                 name={"new_ticket"}
                 onFinish={onFinish}
                 preserve={false}
-                labelCol={{span: 8}}
-                wrapperCol={{span: 12}}
             >
                 <Form.Item
                     label={"Email"}
@@ -82,7 +81,7 @@ function CreateTicketBox() {
                     <TextArea/>
                 </Form.Item>
                 <Form.Item>
-                    <div className={"flex flex-row gap-x-2 md:justify-end"}>
+                    <Space>
                         <Button htmlType="submit">Create ticket</Button>
                         <Button
                             onClick={() => resetFields()}
@@ -90,7 +89,7 @@ function CreateTicketBox() {
                         >
                             Reset
                         </Button>
-                    </div>
+                    </Space>
                 </Form.Item>
             </Form>
         </div>
