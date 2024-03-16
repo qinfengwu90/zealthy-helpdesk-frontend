@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {adminLogin} from "../utilities/utilities";
+import {adminLogin} from "../utilities/AdminUtilities";
 import { Button, Form, Input, message, Modal } from 'antd';
 import {LockOutlined, MailOutlined, UserOutlined} from '@ant-design/icons';
 
@@ -33,7 +33,7 @@ function AdminLogin({onLoginSuccess}: {onLoginSuccess: () => void}) {
 
     return (
         <>
-            <Button shape="round" onClick={signinOnClick} style={{ marginRight: '20px', background: "white"}}>
+            <Button shape="round" onClick={signinOnClick} className={"bg-white"} >
                 Admin Login
             </Button>
             <Modal

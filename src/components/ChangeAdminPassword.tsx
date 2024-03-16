@@ -1,7 +1,7 @@
 import {Button, Form, Input, message, Modal} from "antd";
 import {LockOutlined, MailOutlined} from "@ant-design/icons";
 import {useState} from "react";
-import {changeAdminPassword, registerAdmin} from "../utilities/utilities";
+import {changeAdminPassword, registerAdmin} from "../utilities/AdminUtilities";
 
 
 function ChangeAdminPassword() {

@@ -1,7 +1,7 @@
 import {Button, Form, Input, message, Modal} from "antd";
 import React, {MouseEventHandler, useState} from "react";
 import {LockOutlined, MailOutlined} from "@ant-design/icons";
-import {deleteTicket} from "../utilities/utilities";
+import {deleteTicket} from "../utilities/GeneralUtilities";
 
 
 function DeleteTicket({ticketId, getAllTickets} :{ticketId: number, getAllTickets: () => void}) {

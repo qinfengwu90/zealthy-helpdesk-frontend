@@ -1,20 +1,5 @@
-import {Notification, Ticket} from "../models/models";
-
-const SERVER_ORIGIN = process.env.REACT_APP_API_ROOT;
-
-const handleResponseStatus = (response: Response, errMsg: string) => {
-    const { status, ok } = response;
-
-    if (status === 401) {
-        localStorage.removeItem("authToken"); // web storage
-        window.location.reload();
-        return;
-    }
-
-    if (!ok) {
-        throw Error(errMsg);
-    }
-};
+import {Ticket} from "../models/models";
+import {handleResponseStatus, SERVER_ORIGIN} from "./GeneralUtilities";
 
 export const adminLogin = (credential: {email: string, password: string}) => {
     const loginUrl = `${SERVER_ORIGIN}/admins/login`;
@@ -63,6 +48,7 @@ export const changeAdminPassword = (email: string, oldPassword: string, newPassw
         },
         body: JSON.stringify({ "email": email, "oldPassword": oldPassword, "newPassword": newPassword })
     }).then((response) => {
+
         handleResponseStatus(response, 'Fail to change password');
     })
 }
@@ -94,69 +80,4 @@ export const updateTicketStatus = (ticketId: number, status: string, adminRespon
     }).then((response) => {
         handleResponseStatus(response, 'Fail to update ticket status');
     })
-}
-
-export async function getAllTicketsAndEmailUpdatesForUser(userEmail: string, lastName: string): Promise<{tickets: Ticket[], emails: Notification[]}> {
-    const url = `${SERVER_ORIGIN}/users/all-tickets-and-email-updates`;
-
-    return fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ "userEmail": userEmail, "lastName": lastName})
-    }).then((response) => {
-        // console.log(response.json());
-        handleResponseStatus(response, 'Fail to get tickets');
-        return response.json();
-    })
-}
-
-export const createTicket = (email: string, description: string, firstName: string, lastName: string) => {
-    const url = `${SERVER_ORIGIN}/users/create-ticket`;
-
-    return fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ "userEmail": email, "issueDescription": description, "firstName": firstName, "lastName": lastName })
-    }).then((response) => {
-        handleResponseStatus(response, 'Fail to create ticket');
-    })
-}
-
-export const editTicket = (email: string, ticketId: string, description: string) => {
-    const url = `${SERVER_ORIGIN}/users/edit-ticket`;
-
-    return fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ "email": email, "ticketId": ticketId, "issueDescription": description})
-    }).then((response) => {
-        handleResponseStatus(response, 'Fail to update ticket');
-    })
-}
-
-
-
-export const deleteTicket = (ticketId: number) => {
-    const url = `${SERVER_ORIGIN}/delete-ticket`;
-
-    return fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ "ticketId": ticketId})
-    }).then((response) => {
-        handleResponseStatus(response, 'Fail to delete ticket');
-    })
-}
-
-export const formatTicketStatus = (status: string) => {
-    let newStatus = status.charAt(0).toUpperCase() + status.slice(1);
-    return newStatus.replace(/_/g, ' ');
 }

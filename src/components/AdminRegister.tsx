@@ -1,6 +1,6 @@
 import {useState} from "react";
 import { Button, Form, Input, message, Modal } from 'antd';
-import {registerAdmin} from "../utilities/utilities";
+import {registerAdmin} from "../utilities/AdminUtilities";
 import {LockOutlined, MailOutlined, UserOutlined} from '@ant-design/icons';
 
 function AdminRegister() {

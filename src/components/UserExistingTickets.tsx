@@ -1,5 +1,3 @@
-import {useContext, useEffect, useState} from "react";
-import {Link} from "react-router-dom";
 import {Notification, Ticket} from "../models/models";
 import {Button, Card, List, Tooltip} from "antd";
 
@@ -10,7 +8,7 @@ function UserExistingTickets({tickets, emails, onLogout}: {tickets: Ticket[], em
       <div className={"flex flex-col gap-y-2 w-3/4"} >
           <div>
               <div className={"justify-between flex flex-row"}>
-                <div className={"font-semibold text-2xl"}>All your tickets</div>
+                <div className={"font-semibold text-lg md:text-2xl"}>All your tickets</div>
                   <Button shape="round" onClick={onLogout} style={{ marginRight: '20px', background: "navy", color:"white"}}>
                       Logout</Button>
               </div>
@@ -55,7 +53,7 @@ function UserExistingTickets({tickets, emails, onLogout}: {tickets: Ticket[], em
               />
           </div>
           <div>
-              <div className={"font-semibold text-2xl"}>Email Updates</div>
+              <div className={"font-semibold text-lg md:text-2xl"}>Email Updates</div>
               {(emails === null || emails.length === 0) && <div>No email updates</div>}
               {emails !== null && emails.length > 0 &&
               <List
@@ -76,7 +74,6 @@ function UserExistingTickets({tickets, emails, onLogout}: {tickets: Ticket[], em
                           <Card
                               key={email.id}
                               title={"Email ID: " + email.id}
-                              // extra={<Text>${ticket.issueDescription}</Text>}
                           >
                               <div>
                                   <strong>Status</strong>: {email.message}

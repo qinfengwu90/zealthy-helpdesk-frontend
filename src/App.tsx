@@ -31,26 +31,28 @@ function App() {
 
     return (
         <Layout>
-            <Header style={{display: "flex", alignItems: "center", justifyContent:"space-between"}}>
-                <div className={"text-white font-semibold text-lg gap-x-1"}>
-                    <div><LayoutOutlined /> Zealthy Help Desk Ticketing System</div>
+            <Header className={"px-5 md:px-10 flex flex-row items-center justify-between"} >
+                <div className={"text-white font-semibold text-sm md:text-lg gap-x-1"}>
+                    <LayoutOutlined /> Zealthy Help Desk Ticketing System
                 </div>
                 <div>
                     {authed ?
                         <>
-                            <ChangeAdminPassword />
-                            <AdminRegister />
+                            {/*<ChangeAdminPassword />*/}
+                            {/*<AdminRegister />*/}
                             <Button
                                 shape={"round"}
                                 onClick={handleLogOut}
-                                style={{ marginRight: '20px', background: "white"}}
+                                className={"bg-white"}
                             >Log out</Button>
                         </>
                         : <AdminLogin onLoginSuccess={handleLoginSuccess}/>}
                     </div>
             </Header>
-            {authed ? <AdminView /> : <UserView />}
-            <Footer>
+            <Content className={"px-5 pt-5 md:px-10 md:pt-10"} >
+                {authed ? <AdminView /> : <UserView />}
+            </Content>
+            <Footer className={"px-5 md:px-10"}>
                 ©{new Date().getFullYear()} Qinfeng Wu
             </Footer>
         </Layout>

@@ -2,7 +2,8 @@ import {useEffect, useState} from "react";
 import {Notification, Ticket} from "../models/models";
 import UserInfoToReviewTicket from "./UserInfoToReviewTicket";
 import UserExistingTickets from "./UserExistingTickets";
-import {formatTicketStatus, getAllTicketsAndEmailUpdatesForUser} from "../utilities/utilities";
+import {formatTicketStatus} from "../utilities/GeneralUtilities";
+import {getAllTicketsAndEmailUpdatesForUser} from "../utilities/UserUtilities";
 
 
 function AllUserTickets() {
@@ -43,11 +44,15 @@ function AllUserTickets() {
         setCorrectUserInfoEntered(false);
         setTickets([]);
         setEmails([]);
+        window.location.reload();
   }
 
   return (
       <>
-      {!correctUserInfoEntered ? <UserInfoToReviewTicket onSuccess={onSuccess}/> : <UserExistingTickets tickets={tickets} emails={emails} onLogout={onLogout}/>}
+      {!correctUserInfoEntered ?
+          <UserInfoToReviewTicket onSuccess={onSuccess}/> :
+          <UserExistingTickets tickets={tickets} emails={emails} onLogout={onLogout}/>
+      }
       </>
   );
 }

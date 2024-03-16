@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Button, Card, Cascader, CascaderProps, Form, List, message, Select, theme} from "antd";
 import {Ticket} from "../models/models";
-import {getAllTickets, updateTicketStatus} from "../utilities/utilities";
+import {getAllTickets, updateTicketStatus} from "../utilities/AdminUtilities";
 import TextArea from "antd/es/input/TextArea";
 import DeleteTicket from "./DeleteTicket";
 
@@ -61,7 +61,7 @@ function AdminView() {
             }}
         >
             <div>
-                <div className={"font-semibold text-2xl"}>Tickets from all users (Admin View)</div>
+                <div className={"font-semibold text-lg md:text-2xl"}>Tickets from all users (Admin View)</div>
                 <List
                     style={{marginTop: 20}}
                     grid={{
@@ -127,7 +127,7 @@ function AdminView() {
                                     <Form.Item className={"pl-4"}>
                                         <div className={"flex flex-row gap-x-1 justify-between items-center"}>
                                         <Button htmlType={"submit"}>
-                                            Update Ticket
+                                            Update
                                         </Button>
                                         <DeleteTicket ticketId={ticket.id} getAllTickets={getAndSetAllTickets}/>
                                         </div>

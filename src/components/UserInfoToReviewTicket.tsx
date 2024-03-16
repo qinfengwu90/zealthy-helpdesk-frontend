@@ -1,5 +1,5 @@
 import {Button, Form, Input, message} from "antd";
-import {createTicket, getAllTicketsAndEmailUpdatesForUser} from "../utilities/utilities";
+import {getAllTicketsAndEmailUpdatesForUser} from "../utilities/UserUtilities";
 import {MailOutlined, UserOutlined} from "@ant-design/icons";
 import TextArea from "antd/es/input/TextArea";
 import {Notification, Ticket} from "../models/models";
@@ -23,7 +23,7 @@ function UserInfoToReviewTicket({onSuccess}: {onSuccess: (tickets: Ticket[], ema
     return (
         <div className={"flex flex-col gap-y-3 w-1/2 place-content-center"}>
 
-            <div className={"!text-center font-semibold text-2xl"}>Enter your info to retrieve all your tickets</div>
+            <div className={"!text-center font-semibold text-lg md:text-2xl"}>Enter your info to retrieve all your tickets</div>
 
             <Form
                 name={"user_login"}
@@ -46,10 +46,8 @@ function UserInfoToReviewTicket({onSuccess}: {onSuccess: (tickets: Ticket[], ema
                 >
                     <Input prefix={<UserOutlined />}  />
                 </Form.Item>
-                <Form.Item
-                    wrapperCol={{span: 14, offset: 8}}
-                >
-                    <div className={"flex flex-row gap-x-2"}>
+                <Form.Item>
+                    <div className={"flex flex-row gap-x-2 md:justify-end"}>
                         <Button htmlType="submit">
                             Retrieve tickets
                         </Button>

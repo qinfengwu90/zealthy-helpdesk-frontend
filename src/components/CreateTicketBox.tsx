@@ -1,5 +1,5 @@
 import {Button, Form, Input, message} from "antd";
-import {createTicket} from "../utilities/utilities";
+import {createTicket} from "../utilities/UserUtilities";
 import {UserOutlined, MailOutlined} from "@ant-design/icons";
 import TextArea from "antd/es/input/TextArea";
 import {useEffect, useState} from "react";
@@ -11,25 +11,28 @@ function CreateTicketBox() {
     const [userFirstName, setUserFirstName] = useState(localStorage.getItem('userFirstName')! || "");
 
     const onFinish = (data: { email: string; description: string; firstName: string; lastName: string; }) => {
-
         createTicket(data.email, data.description, data.firstName, data.lastName)
             .then( () => {
                 localStorage.setItem('userEmail', data.email);
                 localStorage.setItem('userLastName', data.lastName);
                 localStorage.setItem('userFirstName', data.firstName);
-                form.resetFields();
                 message.success({content: `Your ticket has been created`, duration: 3} )
-                window.location.reload();
+                resetFields();
             }
             ).catch(err => {
                 message.error(err.message);
         })
     }
 
+    const resetFields = () => {
+        form.resetFields();
+        window.location.reload();
+    }
+
 
     return (
         <div className={"flex flex-col gap-y-3 w-1/2 align-middle"}>
-            <div className={"!text-center font-semibold text-2xl"}>Create a help desk ticket</div>
+            <div className={"!text-center font-semibold text-lg md:text-2xl"}>Create a help desk ticket</div>
             <Form
                 form={form}
                 name={"new_ticket"}
@@ -71,14 +74,12 @@ function CreateTicketBox() {
                 >
                     <TextArea />
                 </Form.Item>
-                <Form.Item
-                    wrapperCol={{span: 14, offset: 8}}
-                >
-                    <div className={"flex flex-row gap-x-2"}>
+                <Form.Item>
+                    <div className={"flex flex-row gap-x-2 md:justify-end"}>
                         <Button htmlType="submit">
                             Create ticket
                         </Button>
-                        <Button htmlType={"reset"} style={{background: "darkred", color: "white"}}>
+                        <Button onClick={()=> resetFields()} style={{background: "darkred", color: "white"}}>
                             Reset
                         </Button>
                     </div>
