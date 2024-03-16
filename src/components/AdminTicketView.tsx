@@ -28,6 +28,7 @@ function AdminTicketView() {
             dataIndex: "id",
             key: "id",
             responsive: ["lg"],
+            sorter: (a, b) => a.id - b.id,
         },
         {
             title: "Email",
@@ -41,9 +42,7 @@ function AdminTicketView() {
             dataIndex: "name",
             key: "name",
             render: (text, record) => (
-                <Space size="middle">
-                    <a>{record.firstName + " " + record.lastName}</a>
-                </Space>
+                <div>{record.firstName + " " + record.lastName}</div>
             ),
             sorter: (a, b) => a.firstName.localeCompare(b.firstName),
         },
@@ -160,6 +159,9 @@ function AdminTicketView() {
                     content: `Ticket #${data.ticketId} has been updated`,
                     duration: 3,
                 });
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500)
             })
             .catch((err) => {
                 message.error(err.message);

@@ -21,8 +21,10 @@ function CreateTicketBox() {
                     content: `Your ticket has been created`,
                     duration: 3,
                 });
-                resetFields();
-                window.location.reload();
+                setTimeout(() => {
+                    resetFields();
+                    window.location.reload();
+                }, 1500)
             })
             .catch((err) => {
                 message.error(err.message);
