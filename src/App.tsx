@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
-import { Breadcrumb, Button, Layout, Menu, theme } from "antd";
+import { Button, Layout } from "antd";
 import "./App.css";
-import CreateTicketBox from "./components/CreateTicketBox";
 import { LayoutOutlined } from "@ant-design/icons";
 import AdminLogin from "./components/AdminLogin";
 import UserView from "./components/UserView";
-import AdminView from "./components/AdminView";
-import AdminRegister from "./components/AdminRegister";
-import ChangeAdminPassword from "./components/ChangeAdminPassword";
+import AdminTicketView from "./components/AdminTicketView";
 
 const { Header, Content, Footer } = Layout;
 
@@ -55,7 +52,12 @@ function App() {
         </div>
       </Header>
       <Content className={"px-5 pt-5 md:px-10 md:pt-10"}>
-        {authed ? <AdminView /> : <UserView />}
+        {authed ? (
+          // <AdminView />
+          <AdminTicketView />
+        ) : (
+          <UserView />
+        )}
       </Content>
       <Footer className={"px-5 md:px-10"}>
         ©{new Date().getFullYear()} Qinfeng Wu

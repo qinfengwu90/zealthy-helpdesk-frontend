@@ -1,5 +1,5 @@
 import { Notification, Ticket } from "../models/models";
-import { Button, Card, List, Tooltip } from "antd";
+import { Button, Card, List } from "antd";
 
 function UserExistingTickets({
   tickets,
