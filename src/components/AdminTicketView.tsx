@@ -37,6 +37,11 @@ function AdminTicketView() {
             title: "Issue",
             dataIndex: "issueDescription",
             key: "issueDescription",
+            render: (text, record) => (
+                <Space size="middle">
+                    <a>{record.issueDescription.slice(0, 60)}</a>
+                </Space>
+            ),
         },
         {
             title: "Status",
@@ -136,6 +141,7 @@ function AdminTicketView() {
     }) => {
         updateTicketStatus(data.ticketId, data.status, data.adminResponse)
             .then(() => {
+                setDisplayModal(false);
                 message.success({
                     content: `Ticket #${data.ticketId} has been updated`,
                     duration: 3,
