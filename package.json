@@ -51,6 +51,8 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "3.2.5",
     "tailwindcss": "^3.4.1"
   },
   "proxy": "https://helpdesk-ticketing-continuous-wiiwahwvbq-uc.a.run.app"

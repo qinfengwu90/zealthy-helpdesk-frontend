@@ -1,7 +1,8 @@
 # Helpdesk Ticketing System Frontend
 
-This project serves as the frontend gateway for managing the Helpdesk Ticketing System. 
-- **Users**: can easily create and track tickets without the need to register or remember passwords. 
+This project serves as the frontend gateway for managing the Helpdesk Ticketing System.
+
+- **Users**: can easily create and track tickets without the need to register or remember passwords.
 - **Admin**: can manage tickets under the protection of authentication
 
 ## Technologies Used
@@ -10,9 +11,11 @@ This project serves as the frontend gateway for managing the Helpdesk Ticketing 
 - **Ant Design**: UI library for React components, providing a sleek and efficient user interface.
 
 ## Deployment
+
 This React frontend is deployed using Google Cloud Run, which communicates the Go backend server which is also hosted on Google Cloud Run.
 
 ## Getting Started
+
 You can try out the frontend by visiting the following link:
 https://zealthy-helpdesk-frontend-wiiwahwvbq-uc.a.run.app/
 

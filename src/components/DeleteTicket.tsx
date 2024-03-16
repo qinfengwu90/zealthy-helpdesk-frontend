@@ -1,51 +1,68 @@
-import {Button, Form, Input, message, Modal} from "antd";
-import React, {MouseEventHandler, useState} from "react";
-import {LockOutlined, MailOutlined} from "@ant-design/icons";
-import {deleteTicket} from "../utilities/GeneralUtilities";
+import { Button, message, Modal } from "antd";
+import React, { MouseEventHandler, useState } from "react";
+import { LockOutlined, MailOutlined } from "@ant-design/icons";
+import { deleteTicket } from "../utilities/GeneralUtilities";
 
+function DeleteTicket({
+  ticketId,
+  getAllTickets,
+}: {
+  ticketId: number;
+  getAllTickets: () => void;
+}) {
+  const [displayModal, setDisplayModal] = useState(false);
 
-function DeleteTicket({ticketId, getAllTickets} :{ticketId: number, getAllTickets: () => void}) {
-    const [displayModal, setDisplayModal] = useState(false);
+  const handleCancel = () => {
+    setDisplayModal(false);
+  };
 
-    const handleCancel = () => {
+  const openDeleteModalOnClick = () => {
+    setDisplayModal(true);
+  };
+
+  const deleteTicketOnClick = (ticketId: number) => {
+    deleteTicket(ticketId)
+      .then(() => {
         setDisplayModal(false);
-    }
+        getAllTickets();
+        message.success("Successfully deleted ticket");
+      })
+      .catch((err) => {
+        message.error(err.message);
+      });
+  };
 
-    const openDeleteModalOnClick = () => {
-        setDisplayModal(true);
-    }
-
-    const deleteTicketOnClick = (ticketId: number) => {
-        deleteTicket(ticketId)
-            .then(() => {
-                setDisplayModal(false);
-                getAllTickets();
-                message.success('Successfully deleted ticket');
-            }).catch(err => {
-            message.error(err.message);
-        })
-    }
-
-    return (
+  return (
     <>
-        <Button onClick={openDeleteModalOnClick} style={{background: "darkred", color: "white"}}>
-            Delete Ticket
-        </Button>
-        <Modal
-            title="Delete Ticket"
-            open={displayModal}
-            onCancel={handleCancel}
-            footer={null}
-            destroyOnClose={true}
-        >
-            <div className={"flex flex-col gap-y-2"}>
-                <h1><strong>Are you sure to delete ticket#: {ticketId}?</strong></h1>
-                <div className={"flex flex-row gap-x-2"}>
-                    <Button htmlType={"submit"} onClick={e => deleteTicketOnClick(ticketId)} style={{background: "darkred", color: "white"}}>Delete</Button>
-                    <Button onClick={handleCancel}>Cancel</Button>
-                </div>
-            </div>
-        </Modal>
+      <Button
+        onClick={openDeleteModalOnClick}
+        style={{ background: "darkred", color: "white" }}
+      >
+        Delete Ticket
+      </Button>
+      <Modal
+        title="Delete Ticket"
+        open={displayModal}
+        onCancel={handleCancel}
+        footer={null}
+        destroyOnClose={true}
+      >
+        <div className={"flex flex-col gap-y-2"}>
+          <h1>
+            <strong>Are you sure to delete ticket#: {ticketId}?</strong>
+          </h1>
+          <div className={"flex flex-row gap-x-2"}>
+            <Button
+              htmlType={"submit"}
+              onClick={(e) => deleteTicketOnClick(ticketId)}
+              style={{ background: "darkred", color: "white" }}
+            >
+              Delete
+            </Button>
+            <Button onClick={handleCancel}>Cancel</Button>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 }
