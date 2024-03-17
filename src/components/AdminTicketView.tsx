@@ -103,10 +103,10 @@ function AdminTicketView() {
             key: "action",
             render: (_, record) => (
                 <Space>
-                    <div onClick={() => {
+                    <a className={"text-blue-800"} onClick={() => {
                         viewDetailOnClick(record);
                     }}>View
-                    </div>
+                    </a>
                 </Space>
             ),
         },
